@@ -1,8 +1,8 @@
 ---
-title: Monell R club meets blogdown
+title: Hello world! Rclub meets blogdown...
 author: Steph
 date: '2018-12-10'
-slug: hello-world-monell-r-club-meets-blogdown
+slug: hello-world-rclub-meets-blogdown
 categories: []
 tags: []
 ---
@@ -10,6 +10,4 @@ R-Club was founded in March of 2016 by [**Dr. Danielle Reed**](https://www.monel
 
 Dani says that "R-Club is like regular exercise - we just keep doing it and we get better gradually". 
 
-![](/post/2018-12-10-hello-world-monell-r-club-meets-blogdown_files/brain.gif)
-
-Clip art from: http://clipart-library.com/brain-excercising-cliparts.html
+![](/post/2018-12-10-hello-world-rclub-meets-blogdown_files/brain.gif)
