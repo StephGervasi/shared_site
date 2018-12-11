@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>A Hugo website</title>
+    <title>Monell RClub</title>
     <link>/</link>
-    <description>Recent content on A Hugo website</description>
+    <description>Recent content on Monell RClub</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 10 Dec 2018 00:00:00 +0000</lastBuildDate>
@@ -19,6 +19,29 @@
       <guid>/2018/12/10/hello-world-rclub-meets-blogdown/</guid>
       <description>R-Club was founded in March of 2016 by Dr. Danielle Reed.
 Dani says that &amp;ldquo;R-Club is like regular exercise - we just keep doing it and we get better gradually&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Improving our workflow with R projects</title>
+      <link>/2018/12/10/improving-our-workflow-with-r-projects/</link>
+      <pubDate>Mon, 10 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/12/10/improving-our-workflow-with-r-projects/</guid>
+      <description>This week we talked Rprojects and version control with Nicolle M. It was enlightening!
+We all strive for reproducible research and many of us collaborate with scientists outside of the Institute. Standardizing our workflow with the use of Rprojects and making sure that R and Git (and therefore GitHub) can communicate, bidirectionally, will take our own research and our collaborative work to the next level.
+Below is an excellent short YouTube clip put together by Sam Burer about how to use Rprojects&amp;hellip; https://www.</description>
+    </item>
+    
+    <item>
+      <title>Lollipop graphs and finding the right visualizations for our data stories</title>
+      <link>/2018/12/10/lollipop-graphs-and-finding-the-right-visualizations-for-our-data-stories/</link>
+      <pubDate>Mon, 10 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/12/10/lollipop-graphs-and-finding-the-right-visualizations-for-our-data-stories/</guid>
+      <description>This week, Alissa shared with us her journey to finding the right plot for her twin data. She settled on a lollipop graph, which is #301 in the R graph gallery! https://www.r-graph-gallery.com/301-custom-lollipop-chart/
+Alissa is looking at how taste perception (of things like bitterness, sweetness, etc.) changes in twins who have been diagnosed with cancer.
+Below are some details of how she went about making her plot
+Some background: Making a figure that plots: 1.</description>
     </item>
     
     <item>
