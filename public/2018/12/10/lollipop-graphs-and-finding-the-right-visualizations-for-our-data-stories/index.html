@@ -78,36 +78,40 @@
 <p>Some background: Making a figure that plots: 1. Plots points (different shapes) based on variable (TwinType (both = B; both have cancer, control = C; control twin pair, discordant = D)) 2. Colors points based on variable (Cancer status (red = cancer / black = control“non-cancer”)) ** bitterA = bitter rating for twin A (for TwinType: B and D, this means they have cancer (red); for TwinType:C this means they are control (black)) ** bitterB = bitter rating for twin B (for TwinType: B this means they have cancer (red); for TwinType: D and C, this means they are control (black)) 3. Plots mean for each variable in point 2 (cancer status) using geom_hline, by setting mean in a vector with desired means (add_mean). <em>ptc1_mean = mean for cancer (1=cancer) </em>ptc0_mean = mean for controls (0=control) ** ptc1_mean = mean for B, C, D for twins with cancer (For C this will be NA - none will have cancer) ** ptc0_mean = mean for B, C, D for twins without cancer (For B this will be NA - none have control) 4.This dataset already has calculated the difference between TwinA and TwinB, so that the twin pairs are sorted from least difference between ratings to greatest difference between ratings (variable name: difference)</p>
 <p>Let’s load ggplot and the data:</p>
 <pre class="r"><code>library(ggplot2)
-read.csv(&quot;LollipopTwinData.csv&quot;, sep = &quot;,&quot;)-&gt;TwinData</code></pre>
+read.csv(&quot;LollipopTwinData.csv&quot;, sep = &quot;,&quot;)-&gt;PTC_twin</code></pre>
 <p>To add mean lines for each twin type, by cancer status, the means are placed in a vector. These means were previously calcualted. ptc1_mean = means for cancer survivors, ptc0_mean = means for controls</p>
 <pre class="r"><code>add_mean&lt;-data.frame(TwinType=c(&quot;B&quot;,&quot;C&quot;,&quot;D&quot;), ptc1_mean=c(37.08, NA, 55.7), ptc0_mean=c(NA, 41.9, 36.6)) #save means in a vector</code></pre>
 <p>Now, make the plot!</p>
-<pre class="r"><code># labels&lt;-c(&quot;no&quot;, &quot;barely&quot;, &quot;weak&quot;, &quot;moderate&quot;, &quot;strong&quot;, &quot;very strong&quot;, &quot;strongest\n imaginable&quot;)# Put gLMS labels into a vector. 
+<pre class="r"><code>labels&lt;-c(&quot;no&quot;, &quot;barely&quot;, &quot;weak&quot;, &quot;moderate&quot;, &quot;strong&quot;, &quot;very strong&quot;, &quot;strongest\n imaginable&quot;)# Put gLMS labels into a vector. 
 
-# ggplot(TwinData, aes(x=reorder(TwinSet, -difference), xend=TwinSet, y= bitterA, yend= bitterB, shape = TwinType))+
-  # geom_segment( aes(x=reorder(TwinSet, -difference), xend=TwinSet, y=bitterA, yend=bitterB), color=&quot;black&quot;)+
+ggplot(PTC_twin, aes(x=reorder(TwinSet, -difference), xend=TwinSet, y= bitterA, yend= bitterB, shape = TwinType))+
+  geom_segment( aes(x=reorder(TwinSet, -difference), xend=TwinSet, y=bitterA, yend=bitterB), color=&quot;black&quot;)+
     #Conditional geom_point: all cancer survivors will be red, controls will be black.
-        #geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;D&quot;,], aes(x=TwinSet, y=bitterA), color= &quot;red&quot;, size=5)+ 
-       # geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;B&quot;,], aes(x=TwinSet, y=bitterA), color= &quot;red&quot;, size=5)+
-        #geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;C&quot;,], aes(x=TwinSet, y=bitterA), color= &quot;black&quot;, size=5)+
+        geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;D&quot;,], aes(x=TwinSet, y=bitterA), color= &quot;red&quot;, size=5)+ 
+        geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;B&quot;,], aes(x=TwinSet, y=bitterA), color= &quot;red&quot;, size=5)+
+        geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;C&quot;,], aes(x=TwinSet, y=bitterA), color= &quot;black&quot;, size=5)+
   
-        #geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;D&quot;,], aes(x=TwinSet, y=bitterB), color= &quot;black&quot;, size=5)+ 
-        #geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;B&quot;,], aes(x=TwinSet, y=bitterB), color= &quot;red&quot;, size=5)+
-       # geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;C&quot;,], aes(x=TwinSet, y=bitterB), color= &quot;black&quot;, size=5)+
+        geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;D&quot;,], aes(x=TwinSet, y=bitterB), color= &quot;black&quot;, size=5)+ 
+        geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;B&quot;,], aes(x=TwinSet, y=bitterB), color= &quot;red&quot;, size=5)+
+        geom_point(data=PTC_twin[PTC_twin$TwinType==&quot;C&quot;,], aes(x=TwinSet, y=bitterB), color= &quot;black&quot;, size=5)+
 
-  #theme_classic()+
-  #facet_grid(.~TwinType, scales=&quot;free_x&quot;, space = &quot;free_x&quot;)+
- # xlab(&quot;Twin Pair&quot;)+
-  # ylab(&quot;Bitterness of PTC (gLMS)&quot;)+
-  # labs(title=&quot;Twin Pairs&quot;)+
-  # theme(panel.border = element_rect(color=&quot;grey50&quot;, fill=NA))+
-  # theme(legend.position = &quot;none&quot;)+
-  # theme(text=element_text(size=25))+
-  # scale_y_continuous(breaks=c(-1.5,1.8,6,17,35,53,100), limits=c(0,100),labels=labels)+ #these breaks are not the right glms points, but off set to make enough room for labels. 
- # theme(axis.text.y=element_text(size=15, angle=25))+
+  theme_classic()+
+  facet_grid(.~TwinType, scales=&quot;free_x&quot;, space = &quot;free_x&quot;)+
+  xlab(&quot;Twin Pair&quot;)+
+  ylab(&quot;Bitterness of PTC (gLMS)&quot;)+
+  labs(title=&quot;Twin Pairs&quot;)+
+  theme(panel.border = element_rect(color=&quot;grey50&quot;, fill=NA))+
+  theme(legend.position = &quot;none&quot;)+
+  theme(text=element_text(size=25))+
+  scale_y_continuous(breaks=c(-1.5,1.8,6,17,35,53,100), limits=c(0,100),labels=labels)+ #these breaks are not the right glms points, but off set to make enough room for labels. 
+  theme(axis.text.y=element_text(size=15, angle=25))+
 
-  # geom_hline(data=add_mean, aes(yintercept= ptc1_mean), color = &quot;Red&quot;, size = 2, linetype = &quot;dashed&quot;)+
-   # geom_hline(data=add_mean, aes(yintercept= ptc0_mean), color = &quot;Black&quot;, size = 2, linetype = &quot;dashed&quot;)</code></pre>
+  geom_hline(data=add_mean, aes(yintercept= ptc1_mean), color = &quot;Red&quot;, size = 2, linetype = &quot;dashed&quot;)+
+    geom_hline(data=add_mean, aes(yintercept= ptc0_mean), color = &quot;Black&quot;, size = 2, linetype = &quot;dashed&quot;)</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_hline).
+
+## Warning: Removed 1 rows containing missing values (geom_hline).</code></pre>
+<p><img src="/post/2018-12-10-lollipop-graphs-and-finding-the-right-visualizations-for-our-data-stories_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 
     </div>
   </article>
