@@ -6,10 +6,19 @@
     <description>Recent content on Monell RClub</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Dec 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Dec 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Blogdown is fun</title>
+      <link>/2018/12/14/blogdown-is-fun/</link>
+      <pubDate>Fri, 14 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/2018/12/14/blogdown-is-fun/</guid>
+      <description>We had fun!</description>
+    </item>
     
     <item>
       <title>Hello world! Rclub meets blogdown...</title>
